@@ -1,15 +1,19 @@
 :root {
   font-size: 16px;
-  --text-primary: #b6b6b6;
-  --text-secondary: #ececec;
-  --bg-primary: #23232e;
-  --bg-secondary: #141418;
-  --transition-speed: 400ms;
+  --bg-primary: #081b29;
+  --bg-accent: #05a2f1;
+  --text-primary: #f4faff;
+}
+
+html {
+  color: var(--text-primary);
 }
 
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--bg-primary);
+  overflow: visible;
 }
 
 body::-webkit-scrollbar {
@@ -17,13 +21,22 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  background: #1e1e24;
+  background: var(--bg-primary);
 }
 
 body::-webkit-scrollbar-thumb {
-  background: #6649b8;
+  background: var(--text-primary);
+}
+
+header {
+  height: 10vh;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 main {
-  margin-left: 5rem;
+  margin-top: 10vh;
+  width: 100vw;
+  z-index: -1;
 }
