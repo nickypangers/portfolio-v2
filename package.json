@@ -18,5 +18,8 @@
     "gsap": "^3.12.5",
     "nuxt": "^3.12.4",
     "vue": "latest"
+  },
+  "devDependencies": {
+    "@iconify-json/jam": "^1.1.9"
   }
 }
