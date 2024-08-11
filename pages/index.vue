@@ -1,77 +1,200 @@
 <template>
-  <div class="h-screen">
-    <section
-      class="relative overflow-hidden h-[320px] flex flex-col items-center justify-center"
-    >
-      <h1
-        class="background-text absolute -mx-8 top-1/2 -translate-y-1/2 -left-1/3 -z-1 text-[320px]"
-      >
-        NIXON
-      </h1>
-      <div ref="headingText" class="mx-4">
-        <div class="font-syne">
-          <h1 class="name-animation text-3xl opacity-0 scale-0">
-            Nixon Pang - <span class="font-bold">hkg</span>
+  <div>
+    <section id="hero" ref="hero">
+      <div class="p-4 pb-16 grid gap-6">
+        <div>
+          <div
+            class="animation hero-animation rounded-full h-16 w-16 overflow-hidden"
+          >
+            <NuxtImg
+              src="/images/portrait.webp"
+              alt="Portrait"
+              width="96"
+              height="96"
+              fill="cover"
+            />
+          </div>
+          <h1 class="animation hero-animation text-4xl mt-4">
+            Hi! I'm Nixon Pang
           </h1>
-          <p class="title-animation text-2xl inline-block opacity-0">
-            a professional full stack developer
-          </p>
         </div>
-        <p
-          class="bio-animation mt-2 text-sm text-[#8F8F8F] font-poppins inline-block opacity-0"
-        >
-          focused on creating memorable ditigal experiences, turning ideas to
-          reality.
+        <div class="pt-4 pb-12 flex items-center">
+          <a
+            class="animation hero-animation social-link"
+            href="https://linkedin.com/in/nixon-pang"
+          >
+            <Icon name="jam:linkedin" />
+          </a>
+          <a
+            class="animation hero-animation ml-4 social-link"
+            href="https://github.com/nickypangers"
+          >
+            <Icon name="jam:github" />
+          </a>
+          <a
+            class="animation hero-animation ml-4 social-link"
+            href="mailto:nixon@nickypangers.com"
+          >
+            <Icon name="jam:envelope-f" />
+          </a>
+        </div>
+        <h2 class="animation hero-animation text-lg">
+          A Full Stack Developer based in Hong Kong.
+        </h2>
+        <p class="animation hero-animation text-sub-accent">
+          Creating amazing things on the internet, turning ideas into reality
         </p>
+        <div class="flex items-center">
+          <button class="animation hero-animation bg-accent text-white">
+            Talk with me
+          </button>
+          <button class="animation hero-animation ml-4 border">
+            See my work
+          </button>
+        </div>
       </div>
     </section>
-    <section>
-      <div class="p-4">
-        <h2 class="text-semibold text-xl">
-          - a curious full stack developer always willing to learn and strive
-          for perfection.
-        </h2>
+    <section ref="workExperienceList" id="work-experience">
+      <div class="bg-secondary py-16 px-4">
+        <h1 class="work-experience-animation inline-block opacity-0 text-2xl">
+          Work Experience
+        </h1>
+        <div class="mt-4 [&>*:nth-child(n)]:border-b">
+          <WorkExperience
+            v-for="item in workExperienceData"
+            :key="`work-experience-` + item.company.split(' ').join('-')"
+            :data="item"
+            class="work-experience-animation inline-block opacity-0"
+          />
+        </div>
       </div>
     </section>
   </div>
 </template>
 <script setup>
 const { $gsap } = useNuxtApp();
-const headingText = ref(null);
+
+useHead({
+  title: 'Nixon Pang',
+  meta: [
+    {
+      name: 'description',
+      content: 'Nixon Pang - Full Stack Developer based in Hong Kong',
+    },
+  ],
+});
+
+const hero = ref(null);
+
+const workExperienceList = ref(null);
+
+const workExperienceData = [
+  {
+    company: 'Cathay Pacific',
+    position: 'Pilot',
+    period: 'February 2023 - Present',
+    imageUrl:
+      'https://media.licdn.com/dms/image/D560BAQFyGCq3eHFt5w/company-logo_100_100/0/1719757759908?e=1731542400&v=beta&t=ypFGpMDRMgoBq9x4z836JBsVBfabYWgYx4XdXOAFozQ',
+  },
+  {
+    company: 'Chaos Theory',
+    position: 'Full Stack Developer',
+    period: 'May 2022 - February 2023',
+    imageUrl:
+      'https://media.licdn.com/dms/image/v2/D560BAQEP1gQqxxe3wA/company-logo_100_100/company-logo_100_100/0/1701777680652/chaostheoryhk_logo?e=1731542400&v=beta&t=e-Hk7v3RcxQt9AbGjyT4hImacM08vpAGQl14uGHwyFk',
+  },
+  {
+    company: 'AQUMON',
+    position: 'Software Engineer',
+    period: 'January 2022 - May 2022',
+    imageUrl:
+      'https://media.licdn.com/dms/image/v2/C560BAQEZHcrNYrrC0A/company-logo_100_100/company-logo_100_100/0/1630656251887/aqumon_logo?e=1731542400&v=beta&t=MZ0y-AldrVXmqAvPlZdb--EIMWKTos_Utx26LcDhRNE',
+  },
+  {
+    company: 'Mosaic Digital Group',
+    position: 'Web/Mobile App Developer',
+    period: 'November 2020 - January 2022',
+    imageUrl:
+      'https://media.licdn.com/dms/image/v2/C560BAQE-vitBvlbLDw/company-logo_100_100/company-logo_100_100/0/1630648658003/mosaic_digital_group_logo?e=1731542400&v=beta&t=vnZjl6aTps34geahA_WkPSm-hqoebMCope2JpfNP6aw',
+  },
+  {
+    company: 'SG Wireless',
+    position: 'Hardware Engineer',
+    period: 'February 2020 - October 2020',
+    imageUrl:
+      'https://media.licdn.com/dms/image/v2/D560BAQEOlNCe9Zyqow/company-logo_100_100/company-logo_100_100/0/1719969196826/sgwireless_logo?e=1731542400&v=beta&t=fVR7I2RwcIe94wIfMgLhE8YhIZ5N5JinR_B_UARRCG0',
+  },
+];
+
+function heroAnimation() {
+  let ctx = $gsap.context(() => {
+    const t1 = $gsap.timeline({
+      scrollTrigger: hero.value,
+      start: 'top top',
+      markers: true,
+    });
+    t1.fromTo(
+      '.hero-animation',
+      { opacity: 0, y: 100 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        stagger: {
+          each: 0.25,
+        },
+      }
+    );
+  }, hero.value);
+}
+
+function workExperienceAnimation() {
+  let ctx = $gsap.context(() => {
+    const t1 = $gsap.timeline({
+      scrollTrigger: workExperienceList.value,
+      start: 'top top',
+      markers: true,
+    });
+    t1.fromTo(
+      '.work-experience-animation',
+      { opacity: 0, x: -100 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: 'power3.out',
+        stagger: {
+          each: 0.2,
+        },
+      }
+    );
+  }, workExperienceList.value);
+}
 
 onMounted(() => {
-  let ctx = $gsap.context(() => {
-    const t1 = $gsap.timeline();
-
-    t1.fromTo(
-      '.name-animation',
-      {
-        scale: 0,
-        opacity: 0,
-      },
-      { scale: 1, opacity: 1, duration: 2.2, ease: 'power3.out' }
-    );
-
-    t1.fromTo(
-      '.title-animation',
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.75, ease: 'power3.out' }
-    );
-
-    t1.fromTo(
-      '.bio-animation',
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.75, ease: 'power3.out' },
-      '-=0.5'
-    );
-  }, headingText.value);
+  heroAnimation();
+  workExperienceAnimation();
 });
 </script>
 <style scoped>
-.background-text {
-  background: -webkit-linear-gradient(#ffffff2e, #ffffff00);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.animation {
+  @apply opacity-0;
+}
+
+section {
+  @apply min-h-screen;
+}
+
+button {
+  @apply text-sm px-5 py-3 rounded-xl min-w-min;
+}
+
+.social-link {
+  @apply border-2 border-secondary hover:border-accent hover:bg-secondary rounded-full w-12 h-12 flex items-center justify-center overflow-hidden;
+}
+
+.social-link > * {
+  @apply w-6 h-6;
 }
 </style>

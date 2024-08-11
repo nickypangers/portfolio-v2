@@ -2,17 +2,16 @@
 export default {
   content: [],
   theme: {
-    fontFamily: {
-      inter: ['Inter', 'sans-serif'],
-      poppins: ['Poppins', 'sans-serif'],
-      syne: ['Syne', 'sans-serif'],
-    },
+    fontFamily: {},
     extend: {
       fontSize: {
         '2xs': '0.5rem',
       },
       colors: {
-        primary: '#142828',
+        primary: '#ffffff',
+        secondary: '#f4f5ef',
+        accent: '#111111',
+        'sub-accent': '#898a85',
       },
     },
   },

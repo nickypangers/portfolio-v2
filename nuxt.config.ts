@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
+      lang: 'en',
     }
   },
   compatibilityDate: '2024-04-03',
@@ -13,19 +14,20 @@ export default defineNuxtConfig({
   googleFonts: {
     download: true,
     families: {
-      Syne: {
+      Roboto: {
         wght: [100, 200, 300, 400, 500, 600, 700, 800, 900],
         ital: [100, 200, 300, 400, 500, 600, 700, 800, 900],
       },
-      Poppins: {
-        wght: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-        ital: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-      },
-      Inter: {
-        wght: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-        ital: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-      }
     }
   },
-  plugins: ['~/plugins/gsap.ts'],
+  plugins: [
+    { src: '~/plugins/gsap.ts', ssr: false },
+  ],
+  image: {
+    format: ['webp'],
+    domains: ['media.licdn.com'],
+    alias: {
+      linkedin: 'https://media.licdn.com/dms/image/v2'
+    }
+  }
 })

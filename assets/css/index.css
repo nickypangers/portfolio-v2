@@ -1,5 +1,6 @@
 html,
 body,
 #__nuxt {
-  @apply bg-primary text-white font-inter;
+  font-family: 'Roboto', sans-serif;
+  @apply text-accent;
 }
