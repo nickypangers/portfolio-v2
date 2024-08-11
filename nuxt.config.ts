@@ -29,5 +29,18 @@ export default defineNuxtConfig({
     alias: {
       linkedin: 'https://media.licdn.com/dms/image/v2'
     }
-  }
+  },
+  tailwindcss: {
+    exposeConfig: true,
+  },
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+      cssnano:
+        process.env.NODE_ENV === 'production'
+          ? { preset: ['default', { discardComments: { removeAll: true } }] }
+          : false, // disable cssnano when not in production
+    },
+  },
 })
