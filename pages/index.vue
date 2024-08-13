@@ -1,10 +1,11 @@
 <template>
   <div>
     <section id="hero" ref="hero">
-      <div class="p-4 pb-16 grid gap-6">
+      <div class="grid gap-6">
         <div>
           <div
-            class="animation hero-animation rounded-full h-16 w-16 overflow-hidden"
+            class="animation hero-animation h-16 w-16"
+            style="clip-path: circle()"
           >
             <NuxtImg
               src="/images/portrait.webp"
@@ -55,7 +56,7 @@
       </div>
     </section>
     <section ref="workExperienceList" id="work-experience">
-      <div class="bg-secondary py-16 px-4">
+      <div class="bg-secondary">
         <h1 class="work-experience-animation inline-block opacity-0 text-2xl">
           Work Experience
         </h1>
@@ -69,10 +70,22 @@
         </div>
       </div>
     </section>
+    <section ref="currentProjects" id="current-projects">
+      <div>
+        <h1 class="current-project-animation inline-block text-2xl">
+          Current Projects
+        </h1>
+        <div class="mt-4 grid gap-2">
+          <Repo v-for="repo in repos" :key="repo.id" :repo="repo" />
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 <script setup>
 const { $gsap } = useNuxtApp();
+
+const { data: repos } = await useFetch('/api/projects');
 
 useHead({
   title: 'Nixon Pang',
@@ -182,8 +195,12 @@ onMounted(() => {
   @apply opacity-0;
 }
 
-section {
+/* section {
   @apply min-h-screen;
+} */
+
+section > div {
+  @apply py-16 px-4;
 }
 
 button {

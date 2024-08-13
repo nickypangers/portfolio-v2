@@ -4,7 +4,12 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      lang: 'en',
+      htmlAttrs: {
+        lang: 'en',
+      },
+      link: [
+        // { rel: 'stylesheet', type: 'text/css', href: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css' }
+      ]
     }
   },
   compatibilityDate: '2024-04-03',
@@ -43,4 +48,7 @@ export default defineNuxtConfig({
           : false, // disable cssnano when not in production
     },
   },
+  runtimeConfig: {
+    githubToken: process.env.GITHUB_TOKEN,
+  }
 })
