@@ -70,7 +70,7 @@
         </div>
       </div>
     </section>
-    <section ref="currentProjects" id="current-projects">
+    <!-- <section ref="currentProjects" id="current-projects">
       <div>
         <h1 class="current-project-animation inline-block text-2xl">
           Current Projects
@@ -79,13 +79,13 @@
           <Repo v-for="repo in repos" :key="repo.id" :repo="repo" />
         </div>
       </div>
-    </section>
+    </section> -->
   </div>
 </template>
 <script setup>
 const { $gsap } = useNuxtApp();
 
-const { data: repos } = await useFetch('/api/projects');
+// const { data: repos } = await useFetch('/api/projects');
 
 useHead({
   title: 'Nixon Pang',
